@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -26,6 +27,10 @@ public class Pedido {
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
+
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", fetch = FetchType.LAZY)
+	private List<Oferta> ofertas;
 
 	public Long getId() {
 		return id;
@@ -93,5 +98,17 @@ public class Pedido {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<Oferta> getOfertas() {
+		return ofertas;
+	}
+
+	public void setOfertas(List<Oferta> ofertas) {
+		this.ofertas = ofertas;
 	}
 }
