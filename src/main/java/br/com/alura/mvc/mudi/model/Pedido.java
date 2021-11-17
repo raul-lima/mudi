@@ -1,5 +1,7 @@
 package br.com.alura.mvc.mudi.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -21,8 +23,13 @@ public class Pedido {
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
+
+	public Long getId() {
+		return id;
+	}
 
 	public String getNomeProduto() {
 		return nomeProduto;
