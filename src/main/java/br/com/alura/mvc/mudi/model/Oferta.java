@@ -20,7 +20,7 @@ public class Oferta {
     private String comentario;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Pedido pedido;
 
     public Long getId() {
